@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp7v2hy6ar5ym"]
+
+[ext_resource type="Script" path="res://entities/vampire.gd" id="1_scd8e"]
+[ext_resource type="Texture2D" uid="uid://csf1o6caneb0d" path="res://sprites/vampire.png" id="1_u4bla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waap4"]
+size = Vector2(640, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v53tx"]
+size = Vector2(112, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2434"]
+size = Vector2(112, 96)
+
+[node name="vampire" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_scd8e")
+
+[node name="vision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+shape = SubResource("RectangleShape2D_waap4")
+debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Vampire" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.8147e-06, 8)
+scale = Vector2(7, 7)
+texture = ExtResource("1_u4bla")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_v53tx")
+
+[node name="projectile_collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile_collision"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_t2434")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -96.0
+offset_top = -88.0
+offset_right = 112.0
+offset_bottom = -61.0
+max_value = 50.0
+value = 5.0
+rounded = true
+allow_lesser = true
+
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]
+[connection signal="area_entered" from="projectile_collision" to="." method="_on_projectile_collision_area_entered"]
+[connection signal="area_exited" from="projectile_collision" to="." method="_on_projectile_collision_area_exited"]

@@ -1,0 +1,1467 @@
+[gd_scene load_steps=21 format=3 uid="uid://molgx8e0yyv0"]
+
+[ext_resource type="Texture2D" uid="uid://t160r6r38g5x" path="res://sprites/human.png" id="1_ogp6k"]
+[ext_resource type="Script" path="res://cutscenes.gd" id="1_p4s65"]
+[ext_resource type="Texture2D" uid="uid://csf1o6caneb0d" path="res://sprites/vampire.png" id="2_nhwfc"]
+[ext_resource type="Texture2D" uid="uid://3sjco2b64yoh" path="res://sprites/cobble.tileset.png" id="2_vxwaq"]
+[ext_resource type="Texture2D" uid="uid://bich7ngn5o7rj" path="res://sprites/zombie.png" id="3_bj4ob"]
+[ext_resource type="Texture2D" uid="uid://0ga0i66ijo52" path="res://sprites/ghost.png" id="4_wkh4n"]
+[ext_resource type="Texture2D" uid="uid://dwfsvp5xknpgy" path="res://sprites/deer.png" id="5_qcrcs"]
+[ext_resource type="Shader" path="res://shaders/fog.gdshader" id="8_pvbqq"]
+[ext_resource type="PackedScene" uid="uid://dsakshb8wrwtd" path="res://entities/torch.tscn" id="9_xo2wx"]
+[ext_resource type="FontFile" uid="uid://doyg520vtn0kf" path="res://sprites/Kenney Space.ttf" id="10_bpggp"]
+
+[sub_resource type="Animation" id="Animation_dwd4i"]
+resource_name = "GhostVsDeer"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GhostVsDeer/Ghost:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, -4), Vector2(0, 4), Vector2(0, -4), Vector2(0, 4), Vector2(0, -4), Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GhostVsDeer/Ghost2:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GhostVsDeer/Ghost3:offset")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, 0), Vector2(0, -8), Vector2(0, 0), Vector2(0, -8), Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GhostVsDeer/Deer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GhostVsDeer/Deer2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GhostVsDeer/Deer3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GhostVsDeer/Deer:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.8, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(904, 480), Vector2(744, 320)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GhostVsDeer/Deer2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.8, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 264), Vector2(400, 392)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GhostVsDeer/Deer3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.8, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(800, 64), Vector2(424, 176)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("humanVsVampire:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VampireVsZombie:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ZombieVsGhost:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GhostVsDeer:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_41lou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("humanVsVampire/Vampire:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1224, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("humanVsVampire/Vampire2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1328, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("humanVsVampire/Vampire3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1224, 512)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("humanVsVampire/Human2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("humanVsVampire/Human:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("humanVsVampire/Human3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("humanVsVampire/Human:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 192)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("humanVsVampire/Human2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(688, 328)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("humanVsVampire/Human3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(448, 520)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("humanVsVampire:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VampireVsZombie:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ZombieVsGhost:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GhostVsDeer:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VampireVsZombie/Zombie2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1088, -64)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("VampireVsZombie/Zombie2:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("VampireVsZombie/Zombie:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1200, 376)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("VampireVsZombie/Zombie:frame")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("VampireVsZombie/Zombie3:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(880, 728)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("VampireVsZombie/Zombie3:frame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("ZombieVsGhost/Ghost:offset")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("ZombieVsGhost/Ghost3:offset")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("ZombieVsGhost/Ghost2:offset")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("ZombieVsGhost/Ghost:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 712)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("ZombieVsGhost/Ghost2:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(864, -80)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("ZombieVsGhost/Ghost3:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(776, 424)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("ZombieVsGhost/Zombie:frame")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("ZombieVsGhost/Zombie:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("ZombieVsGhost/Zombie2:frame")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("ZombieVsGhost/Zombie2:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("ZombieVsGhost/Zombie3:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("ZombieVsGhost/Zombie3:frame")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("GhostVsDeer/Ghost:offset")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("GhostVsDeer/Ghost2:offset")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("GhostVsDeer/Ghost3:offset")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("GhostVsDeer/Deer:frame")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("GhostVsDeer/Deer2:frame")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("GhostVsDeer/Deer3:frame")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("GhostVsDeer/Deer:position")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(744, 320)]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("GhostVsDeer/Deer2:position")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 264)]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("GhostVsDeer/Deer3:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 64)]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("Polygon2D:visible")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f0cfp"]
+resource_name = "VampireVsZombie"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VampireVsZombie/Zombie2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1088, -64), Vector2(816, 96), Vector2(584, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VampireVsZombie/Zombie2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1, 2, 1, 3, 1, 2, 1, 3, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VampireVsZombie/Zombie:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1304, 400), Vector2(840, 320)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VampireVsZombie/Zombie:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VampireVsZombie/Zombie3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(880, 728), Vector2(408, 456)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VampireVsZombie/Zombie3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 3, 1, 2, 1, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("humanVsVampire:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VampireVsZombie:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ZombieVsGhost:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GhostVsDeer:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tqsl3"]
+resource_name = "ZombieVsGhost"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ZombieVsGhost/Ghost:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ZombieVsGhost/Ghost3:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ZombieVsGhost/Ghost2:offset")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, -4), Vector2(0, 4), Vector2(0, -4), Vector2(0, 4), Vector2(0, -4), Vector2(0, 4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ZombieVsGhost/Ghost:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 712), Vector2(272, 440)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ZombieVsGhost/Ghost2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(864, -80), Vector2(568, 112)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ZombieVsGhost/Ghost3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1216, 424), Vector2(776, 424)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("humanVsVampire:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VampireVsZombie:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GhostVsDeer:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ZombieVsGhost/Zombie:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ZombieVsGhost/Zombie:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -1.30027]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ZombieVsGhost/Zombie2:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ZombieVsGhost/Zombie2:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -1.76278]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ZombieVsGhost/Zombie3:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ZombieVsGhost/Zombie3:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -1.42244]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("ZombieVsGhost:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fiq7u"]
+resource_name = "humanVsVampire"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("humanVsVampire/Vampire:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1224, 320), Vector2(-128, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("humanVsVampire/Vampire2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1328, 128), Vector2(-384, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("humanVsVampire/Vampire3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1224, 512), Vector2(-320, 512)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("humanVsVampire/Human2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("humanVsVampire/Human:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.55, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("humanVsVampire/Human3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.45, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("humanVsVampire/Human:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(384, 192), Vector2(256, 192)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("humanVsVampire/Human2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(688, 328), Vector2(576, 328)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("humanVsVampire/Human3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(448, 520), Vector2(320, 520)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("humanVsVampire:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VampireVsZombie:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ZombieVsGhost:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GhostVsDeer:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lwd6n"]
+resource_name = "Ending"
+length = 1000.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hr0bn"]
+_data = {
+"Ending": SubResource("Animation_lwd6n"),
+"GhostVsDeer": SubResource("Animation_dwd4i"),
+"RESET": SubResource("Animation_41lou"),
+"VampireVsZombie": SubResource("Animation_f0cfp"),
+"ZombieVsGhost": SubResource("Animation_tqsl3"),
+"humanVsVampire": SubResource("Animation_fiq7u")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6g68g"]
+texture = ExtResource("2_vxwaq")
+texture_region_size = Vector2i(8, 8)
+1:2/0 = 0
+2:2/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+3:2/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+5:2/0 = 0
+4:4/0 = 0
+6:2/0 = 0
+1:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xts60"]
+tile_size = Vector2i(8, 8)
+sources/1 = SubResource("TileSetAtlasSource_6g68g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk2ch"]
+shader = ExtResource("8_pvbqq")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = false
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(0.1, 0.1)
+shader_parameter/scroll_noise_tex = true
+shader_parameter/noise_scroll_direction = Vector2(0.5, 0)
+
+[node name="cutscenes" type="Node2D"]
+script = ExtResource("1_p4s65")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hr0bn")
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+tile_set = SubResource("TileSet_xts60")
+format = 2
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(4, 327681, 0, 65540, 327681, 0, 0, 327681, 0, 65536, 327681, 0, 131072, 327681, 0, 196608, 327681, 0, 262144, 327681, 0, 327680, 327681, 0, 393216, 327681, 0, 458752, 327681, 0, 524288, 327681, 0, 589824, 327681, 0, 1, 262145, 0, 65537, 262145, 0, 131073, 262145, 0, 196609, 262145, 0, 262145, 262145, 0, 327681, 262145, 0, 393217, 262145, 0, 458753, 262145, 0, 2, 327681, 0, 65538, 327681, 0, 131074, 327681, 0, 196610, 327681, 0, 262146, 327681, 0, 327682, 327681, 0, 393218, 327681, 0, 458754, 327681, 0, 3, 262145, 0, 65539, 262145, 0, 131075, 262145, 0, 196611, 262145, 0, 262147, 262145, 0, 327683, 262145, 0, 393219, 262145, 0, 458755, 262145, 0, 131076, 327681, 0, 196612, 327681, 0, 262148, 327681, 0, 327684, 327681, 0, 393220, 327681, 0, 458756, 327681, 0, 5, 262145, 0, 65541, 262145, 0, 131077, 262145, 0, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 393221, 262145, 0, 458757, 262145, 0, 6, 327681, 0, 65542, 327681, 0, 131078, 327681, 0, 196614, 327681, 0, 262150, 327681, 0, 327686, 327681, 0, 393222, 327681, 0, 458758, 327681, 0, 7, 262145, 0, 65543, 262145, 0, 131079, 262145, 0, 196615, 262145, 0, 262151, 262145, 0, 327687, 262145, 0, 393223, 262145, 0, 458759, 262145, 0, 8, 327681, 0, 65544, 327681, 0, 131080, 327681, 0, 196616, 327681, 0, 262152, 327681, 0, 327688, 327681, 0, 393224, 327681, 0, 458760, 327681, 0, 9, 262145, 0, 65545, 262145, 0, 131081, 262145, 0, 196617, 262145, 0, 262153, 262145, 0, 327689, 262145, 0, 393225, 262145, 0, 458761, 262145, 0, 10, 327681, 0, 65546, 327681, 0, 131082, 327681, 0, 196618, 327681, 0, 262154, 327681, 0, 327690, 327681, 0, 393226, 327681, 0, 458762, 327681, 0, 11, 262145, 0, 65547, 262145, 0, 131083, 262145, 0, 196619, 262145, 0, 262155, 262145, 0, 327691, 262145, 0, 393227, 262145, 0, 458763, 262145, 0, 12, 327681, 0, 65548, 327681, 0, 131084, 327681, 0, 196620, 327681, 0, 262156, 327681, 0, 327692, 327681, 0, 393228, 327681, 0, 458764, 327681, 0, 13, 262145, 0, 65549, 262145, 0, 131085, 262145, 0, 196621, 262145, 0, 262157, 262145, 0, 327693, 262145, 0, 393229, 262145, 0, 458765, 262145, 0, 14, 327681, 0, 65550, 327681, 0, 131086, 327681, 0, 196622, 327681, 0, 262158, 327681, 0, 327694, 327681, 0, 393230, 327681, 0, 458766, 327681, 0, 15, 262145, 0, 65551, 262145, 0, 131087, 262145, 0, 196623, 262145, 0, 262159, 262145, 0, 327695, 262145, 0, 393231, 262145, 0, 458767, 262145, 0, 16, 327681, 0, 65552, 327681, 0, 131088, 327681, 0, 196624, 327681, 0, 262160, 327681, 0, 327696, 327681, 0, 393232, 327681, 0, 458768, 327681, 0, 17, 262145, 0, 65553, 262145, 0, 131089, 262145, 0, 196625, 262145, 0, 262161, 262145, 0, 327697, 262145, 0, 393233, 262145, 0, 458769, 262145, 0, 524305, 262145, 0, 589841, 262145, 0, -1, 262145, 0, 65535, 262145, 0, 131071, 262145, 0, 196607, 262145, 0, 262143, 262145, 0, 327679, 262145, 0, 393215, 262145, 0, 458751, 262145, 0, 524287, 262145, 0, 589823, 262145, 0, 655359, 262145, 0, 720895, 262145, 0, -65536, 327681, 0, 655360, 327681, 0, -65535, 262145, 0, 655361, 262145, 0, -65534, 327681, 0, 655362, 327681, 0, -65533, 262145, 0, 655363, 262145, 0, -65532, 327681, 0, 655364, 327681, 0, -65531, 262145, 0, 655365, 262145, 0, -65530, 327681, 0, 655366, 327681, 0, -65529, 262145, 0, 655367, 262145, 0, -65528, 327681, 0, 655368, 327681, 0, -65527, 262145, 0, 655369, 262145, 0, -65526, 327681, 0, 655370, 327681, 0, -65525, 262145, 0, 655371, 262145, 0, -65524, 327681, 0, 655372, 327681, 0, -65523, 262145, 0, 655373, 262145, 0, -65522, 327681, 0, 655374, 327681, 0, -65521, 262145, 0, 655375, 262145, 0, -65520, 327681, 0, 655376, 327681, 0, -65519, 262145, 0, 655377, 262145, 0, -65518, 327681, 0, 18, 327681, 0, 65554, 327681, 0, 131090, 327681, 0, 196626, 327681, 0, 262162, 327681, 0, 327698, 327681, 0, 393234, 327681, 0, 458770, 327681, 0, 524306, 327681, 0, 589842, 327681, 0, 655378, 327681, 0, 524289, 262145, 0, 589825, 262145, 0, 524290, 327681, 0, 589826, 327681, 0, 524291, 262145, 0, 589827, 262145, 0, 524292, 327681, 0, 589828, 327681, 0, 524293, 262145, 0, 589829, 262145, 0, 524294, 327681, 0, 589830, 327681, 0, 524295, 262145, 0, 589831, 262145, 0, 524296, 327681, 0, 589832, 327681, 0, 524297, 262145, 0, 589833, 262145, 0, 524298, 327681, 0, 589834, 327681, 0, 524299, 262145, 0, 589835, 262145, 0, 524300, 327681, 0, 589836, 327681, 0, 524301, 262145, 0, 589837, 262145, 0, 524302, 327681, 0, 589838, 327681, 0, 524303, 262145, 0, 589839, 262145, 0, 524304, 327681, 0, 589840, 327681, 0)
+layer_1/tile_data = PackedInt32Array(655360, 196609, 0, 655361, 196609, 0, 655362, 196609, 0, 655363, 196609, 0, 655364, 196609, 0, 655365, 196609, 0, 655366, 196609, 0, 655367, 196609, 0, 655368, 196609, 0, 655369, 196609, 0, 655370, 196609, 0, 655371, 196609, 0, 655372, 196609, 0, 655373, 196609, 0, 655374, 196609, 0, 655375, 196609, 0, 655376, 196609, 0, 655377, 196609, 0, 65535, 196609, 2, 131071, 196609, 2, 196607, 196609, 2, 262143, 196609, 2, 327679, 196609, 2, 393215, 196609, 2, 458751, 196609, 2, 524287, 196609, 2, 589823, 196609, 2, 655359, 196609, 2, 720895, 196609, 2, -65536, 65537, 2, -65535, 65537, 2, -65534, 65537, 2, -65533, 65537, 2, -65532, 65537, 2, -65531, 65537, 2, -65530, 65537, 2, -65529, 65537, 2, -65528, 65537, 2, -65527, 65537, 2, -65526, 65537, 2, -65525, 65537, 2, -65524, 65537, 2, -65523, 65537, 2, -65522, 65537, 2, -65521, 65537, 2, -65520, 65537, 2, -65519, 65537, 2, 65554, 65537, 0, 131090, 65537, 0, 196626, 65537, 0, 262162, 65537, 0, 327698, 65537, 0, 393234, 65537, 0, 458770, 65537, 0, 524306, 65537, 0, 589842, 65537, 0, 18, 65537, 0, 458753, 262145, 3, 524289, 262145, 4, 458754, 327681, 3, 524290, 327681, 4, 458755, 327681, 3, 524291, 327681, 4, 458756, 327681, 3, 524292, 327681, 4, 458757, 327681, 3, 524293, 327681, 4, 458758, 327681, 3, 524294, 327681, 4, 458759, 327681, 3, 524295, 327681, 4, 458760, 327681, 3, 524296, 327681, 4, 458761, 327681, 3, 524297, 327681, 4, 458762, 327681, 3, 524298, 327681, 4, 458763, 327681, 3, 524299, 327681, 4, 458764, 327681, 3, 524300, 327681, 4, 458765, 327681, 3, 524301, 327681, 4, 458766, 327681, 3, 524302, 327681, 4, 458767, 327681, 3, 524303, 327681, 4, 458768, 393217, 3, 524304, 393217, 4, 65552, 393217, 2, 131088, 393217, 3, 65551, 327681, 2, 131087, 327681, 3, 65550, 327681, 2, 131086, 327681, 3, 65549, 327681, 2, 131085, 327681, 3, 65548, 327681, 2, 131084, 327681, 3, 65547, 327681, 2, 131083, 327681, 3, 65546, 327681, 2, 131082, 327681, 3, 65545, 327681, 2, 131081, 327681, 3, 65544, 327681, 2, 131080, 327681, 3, 65543, 327681, 2, 131079, 327681, 3, 65542, 327681, 2, 131078, 327681, 3, 65541, 327681, 2, 131077, 327681, 3, 65540, 327681, 2, 131076, 327681, 3, 65539, 327681, 2, 131075, 327681, 3, 65538, 327681, 2, 131074, 327681, 3, 65537, 262145, 2, 131073, 262145, 3, 196609, 262145, 3, 196610, 327681, 3, 262145, 262145, 3, 262146, 327681, 3, 327681, 262145, 3, 327682, 327681, 3, 393217, 262145, 3, 393218, 327681, 3, 196623, 327681, 3, 196624, 393217, 3, 262159, 327681, 3, 262160, 393217, 3, 327695, 327681, 3, 327696, 393217, 3, 393231, 327681, 3, 393232, 393217, 3, 196611, 327681, 3, 262147, 327681, 3, 327683, 327681, 3, 393219, 327681, 3, 196612, 327681, 3, 262148, 327681, 3, 327684, 327681, 3, 393220, 327681, 3, 196613, 327681, 3, 262149, 327681, 3, 327685, 327681, 3, 393221, 327681, 3, 196614, 327681, 3, 262150, 327681, 3, 327686, 327681, 3, 393222, 327681, 3, 196615, 327681, 3, 262151, 327681, 3, 327687, 327681, 3, 393223, 327681, 3, 196616, 327681, 3, 262152, 327681, 3, 327688, 327681, 3, 393224, 327681, 3, 196617, 327681, 3, 262153, 327681, 3, 327689, 327681, 3, 393225, 327681, 3, 196618, 327681, 3, 262154, 327681, 3, 327690, 327681, 3, 393226, 327681, 3, 196619, 327681, 3, 262155, 327681, 3, 327691, 327681, 3, 393227, 327681, 3, 196620, 327681, 3, 262156, 327681, 3, 327692, 327681, 3, 393228, 327681, 3, 196621, 327681, 3, 262157, 327681, 3, 327693, 327681, 3, 393229, 327681, 3, 196622, 327681, 3, 262158, 327681, 3, 327694, 327681, 3, 393230, 327681, 3, -1, 196609, 2, 655378, 65537, 0, -65518, 65537, 0)
+
+[node name="humanVsVampire" type="Node2D" parent="."]
+
+[node name="Human" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(384, 192)
+scale = Vector2(8, 8)
+texture = ExtResource("1_ogp6k")
+hframes = 4
+
+[node name="Human2" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(688, 328)
+scale = Vector2(8, 8)
+texture = ExtResource("1_ogp6k")
+hframes = 4
+
+[node name="Human3" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(448, 520)
+scale = Vector2(8, 8)
+texture = ExtResource("1_ogp6k")
+hframes = 4
+
+[node name="Vampire" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(1224, 320)
+scale = Vector2(-8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="Vampire2" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(1328, 128)
+scale = Vector2(-8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="Vampire3" type="Sprite2D" parent="humanVsVampire"]
+texture_filter = 1
+position = Vector2(1224, 512)
+scale = Vector2(-8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="VampireVsZombie" type="Node2D" parent="."]
+visible = false
+
+[node name="Vampire" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(520, 120)
+scale = Vector2(8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="Vampire2" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(776, 312)
+scale = Vector2(8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="Vampire3" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(320, 448)
+scale = Vector2(8, 8)
+texture = ExtResource("2_nhwfc")
+hframes = 4
+
+[node name="Zombie" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(1200, 376)
+rotation = 3.14159
+scale = Vector2(8, -8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+frame = 1
+
+[node name="Zombie2" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(1088, -64)
+rotation = 3.14159
+scale = Vector2(8, -8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+frame = 1
+
+[node name="Zombie3" type="Sprite2D" parent="VampireVsZombie"]
+texture_filter = 1
+position = Vector2(880, 728)
+rotation = 3.14159
+scale = Vector2(8, -8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+frame = 1
+
+[node name="ZombieVsGhost" type="Node2D" parent="."]
+visible = false
+
+[node name="Zombie" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(256, 432)
+scale = Vector2(8, 8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+frame = 1
+
+[node name="Zombie2" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(520, 144)
+scale = Vector2(8, 8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+
+[node name="Zombie3" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(752, 456)
+scale = Vector2(8, 8)
+texture = ExtResource("3_bj4ob")
+hframes = 8
+frame = 1
+
+[node name="Ghost" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(640, 712)
+scale = Vector2(4, 4)
+texture = ExtResource("4_wkh4n")
+hframes = 2
+
+[node name="Ghost2" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(864, -80)
+scale = Vector2(4, 4)
+texture = ExtResource("4_wkh4n")
+offset = Vector2(0, -4)
+hframes = 2
+
+[node name="Ghost3" type="Sprite2D" parent="ZombieVsGhost"]
+texture_filter = 1
+position = Vector2(776, 424)
+scale = Vector2(4, 4)
+texture = ExtResource("4_wkh4n")
+offset = Vector2(0, 8)
+hframes = 2
+
+[node name="GhostVsDeer" type="Node2D" parent="."]
+visible = false
+
+[node name="Deer" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(744, 320)
+scale = Vector2(8, 8)
+texture = ExtResource("5_qcrcs")
+hframes = 4
+frame = 1
+
+[node name="Deer2" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(160, 264)
+scale = Vector2(-8, 8)
+texture = ExtResource("5_qcrcs")
+hframes = 4
+
+[node name="Deer3" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(800, 64)
+scale = Vector2(8, 8)
+texture = ExtResource("5_qcrcs")
+hframes = 4
+
+[node name="Ghost" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(416, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("4_wkh4n")
+offset = Vector2(0, -4)
+hframes = 2
+
+[node name="Ghost2" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(712, 320)
+scale = Vector2(-4, 4)
+texture = ExtResource("4_wkh4n")
+hframes = 2
+
+[node name="Ghost3" type="Sprite2D" parent="GhostVsDeer"]
+texture_filter = 1
+position = Vector2(392, 448)
+scale = Vector2(-4, 4)
+texture = ExtResource("4_wkh4n")
+hframes = 2
+
+[node name="smoke" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yk2ch")
+offset_left = -744.0
+offset_top = -1304.0
+offset_right = 2128.0
+offset_bottom = 1232.0
+
+[node name="shady" type="CanvasModulate" parent="."]
+z_index = 2
+position = Vector2(528, 232)
+color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[node name="torch" parent="." instance=ExtResource("9_xo2wx")]
+position = Vector2(32, 152)
+
+[node name="torch3" parent="." instance=ExtResource("9_xo2wx")]
+position = Vector2(1120, 160)
+scale = Vector2(-8, 8)
+
+[node name="torch4" parent="." instance=ExtResource("9_xo2wx")]
+position = Vector2(1120, 480)
+scale = Vector2(-8, 8)
+
+[node name="torch2" parent="." instance=ExtResource("9_xo2wx")]
+position = Vector2(32, 480)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-120, -136, 1448, -184, 1456, 776, -112, 864)
+
+[node name="Label" type="Label" parent="Polygon2D"]
+offset_left = 176.0
+offset_top = 264.0
+offset_right = 985.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("10_bpggp")
+theme_override_font_sizes/font_size = 26
+text = "You escaped the house and won"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dowv1d5uufc0a"]
+
+[ext_resource type="Texture2D" uid="uid://fbejnc3ro7mo" path="res://sprites/ball.png" id="1_051mv"]
+[ext_resource type="Script" path="res://entities/ball.gd" id="1_otrq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrbmr"]
+radius = 64.0
+
+[sub_resource type="Animation" id="Animation_eita0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6hm4x"]
+resource_name = "roll"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5u2yv"]
+_data = {
+"RESET": SubResource("Animation_eita0"),
+"roll": SubResource("Animation_6hm4x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64bq4"]
+size = Vector2(128, 128)
+
+[node name="ball" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_otrq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nrbmr")
+
+[node name="Ball" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("1_051mv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5u2yv")
+}
+autoplay = "roll"
+
+[node name="wall_collision" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_collision"]
+shape = SubResource("RectangleShape2D_64bq4")
+
+[connection signal="body_entered" from="wall_collision" to="." method="_on_wall_collision_body_entered"]

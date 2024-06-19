@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp755ir6pbdqr"]
+
+[ext_resource type="Texture2D" uid="uid://dv67vpoy6he4l" path="res://sprites/circle_05.png" id="1_mard1"]
+
+[node name="glow" type="PointLight2D"]
+energy = 0.75
+texture = ExtResource("1_mard1")
+texture_scale = 2.75

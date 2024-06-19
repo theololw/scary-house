@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdotqt8v2hqc1"]
+
+[ext_resource type="Script" path="res://projectiles/salt.gd" id="1_d061c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mdxp"]
+size = Vector2(8, 8)
+
+[node name="salt" type="Area2D"]
+show_behind_parent = true
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_d061c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5mdxp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[node name="decay_cooldown" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="decay_cooldown" to="." method="_on_decay_cooldown_timeout"]

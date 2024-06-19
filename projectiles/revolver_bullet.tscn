@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciqp83fwweqhv"]
+
+[ext_resource type="Script" path="res://projectiles/revolver_bullet.gd" id="1_2usey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d7ko"]
+size = Vector2(4, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76mbh"]
+size = Vector2(8, 4)
+
+[node name="revolver_bullet" type="Area2D"]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_2usey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5d7ko")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_76mbh")
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color(0.682353, 0.682353, 0.682353, 1)
+polygon = PackedVector2Array(-4, -2, 4, -2, 4, 2, -4, 2)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.603922, 0.603922, 0.603922, 1)
+polygon = PackedVector2Array(-2, -4, 2, -4, 2, 4, -2, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

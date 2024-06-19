@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://cxofdwhd11kv7"]
+
+[ext_resource type="Script" path="res://projectiles/garlic_bomb.gd" id="1_0akjc"]
+[ext_resource type="Texture2D" uid="uid://bki8ylodgfela" path="res://sprites/garlic.png" id="1_5dl5s"]
+[ext_resource type="Texture2D" uid="uid://bmwogbl87mhyj" path="res://sprites/smoke_07.png" id="2_1gjcy"]
+[ext_resource type="AudioStream" uid="uid://3lrdoj6vm6sg" path="res://sounds/woosh1.ogg" id="4_k7ufw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p7a8"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vusr"]
+radius = 123.65
+
+[sub_resource type="Curve" id="Curve_uuhwo"]
+_data = [Vector2(0, 0.32967), 0.0, 0.0, 0, 0, Vector2(0.82, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tuqfq"]
+curve = SubResource("Curve_uuhwo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nhef0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(128, 128, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(-1, 0, 0)
+gravity = Vector3(0, -30, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_tuqfq")
+color = Color(0.796078, 0.796078, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeqd0"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_t85gx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area_of_effect/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e5keo"]
+resource_name = "collisionOn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area_of_effect/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2shr"]
+_data = {
+"RESET": SubResource("Animation_t85gx"),
+"collisionOn": SubResource("Animation_e5keo")
+}
+
+[node name="GarlicBomb" type="RigidBody2D"]
+collision_layer = 16
+gravity_scale = 0.0
+script = ExtResource("1_0akjc")
+
+[node name="Garlic" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_5dl5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2p7a8")
+
+[node name="Area_of_effect" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_of_effect"]
+shape = SubResource("CircleShape2D_6vusr")
+disabled = true
+
+[node name="smoke" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_nhef0")
+texture = ExtResource("2_1gjcy")
+local_coords = true
+
+[node name="garlic_timer" type="Timer" parent="."]
+wait_time = 0.75
+
+[node name="detonate_collision" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detonate_collision"]
+shape = SubResource("RectangleShape2D_jeqd0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o2shr")
+}
+
+[node name="woosh1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_k7ufw")
+
+[connection signal="timeout" from="garlic_timer" to="." method="_on_garlic_timer_timeout"]
+[connection signal="body_entered" from="detonate_collision" to="." method="_on_detonate_collision_body_entered"]

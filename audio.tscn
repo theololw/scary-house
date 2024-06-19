@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bthwulhulmmfh"]
+
+[ext_resource type="Script" path="res://audio.gd" id="1_ov6ty"]
+[ext_resource type="AudioStream" uid="uid://b3o4uomut1ni0" path="res://sounds/Sad Descent.ogg" id="2_q7gdp"]
+[ext_resource type="AudioStream" uid="uid://ceytwfta45ea8" path="res://sounds/Sad Town.ogg" id="3_sge1o"]
+[ext_resource type="AudioStream" uid="uid://b0lcitmqcelf0" path="res://sounds/Time Driving.ogg" id="4_84w3x"]
+[ext_resource type="AudioStream" uid="uid://c7p2jlsx8ev7s" path="res://sounds/Space Cadet.ogg" id="5_pg85a"]
+
+[node name="audio" type="Node"]
+script = ExtResource("1_ov6ty")
+
+[node name="Sad_Descent" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q7gdp")
+volume_db = -6.0
+
+[node name="Sad_town" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sge1o")
+volume_db = -6.0
+
+[node name="Time_driving" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_84w3x")
+volume_db = -6.0
+
+[node name="Space_cadet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pg85a")
+volume_db = -6.0

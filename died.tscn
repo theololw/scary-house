@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b63b6ubn7icke"]
+
+[ext_resource type="FontFile" uid="uid://doyg520vtn0kf" path="res://sprites/Kenney Space.ttf" id="1_iic4h"]
+[ext_resource type="Script" path="res://died.gd" id="1_waa6g"]
+
+[node name="died" type="Node2D"]
+script = ExtResource("1_waa6g")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("1_iic4h")
+theme_override_font_sizes/font_size = 206
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("1_iic4h")
+text = "try again"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
